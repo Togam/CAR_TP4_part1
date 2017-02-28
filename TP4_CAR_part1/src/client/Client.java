@@ -1,9 +1,9 @@
 package client;
 
 /**
- * Class client
- * @author six et delbrouque
- *
+ * @author six delbrouque
+ * 
+ *         Classe object du Client
  */
 public class Client {
 

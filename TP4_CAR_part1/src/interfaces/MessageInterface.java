@@ -1,6 +1,10 @@
 package interfaces;
 
-public class MessageInterface {
-
+/**
+ * @author six delbrouque
+ * 
+ *         Interface serializable représentant les messages
+ */
+public interface MessageInterface {
 
 }
