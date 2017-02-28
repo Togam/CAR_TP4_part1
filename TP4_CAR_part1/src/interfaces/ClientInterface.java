@@ -1,11 +1,14 @@
 package interfaces;
 
+import java.rmi.Remote;
+import java.rmi.RemoteException;
+
 /**
  * @author six delbrouque
  * 
  *         Interface remote représentant le client
  */
-public interface ClientInterface {
+public interface ClientInterface extends Remote {
 
-//	 void notify(Message msg);
+	void notify(MessageInterface msg) throws RemoteException;
 }
