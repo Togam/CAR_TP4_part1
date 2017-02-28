@@ -1,8 +1,13 @@
 package interfaces;
 
-public class ChatRoomInterface {
+/**
+ * @author six delbrouque
+ * 
+ *         Interface remote représentation le chat
+ */
+public interface ChatRoomInterface {
 
-//	void send (Message msg);
-//	boolean/void? disconnect(....)
-//	boolean/void? connect(....)
+	// void send (Message msg);
+	// boolean/void? disconnect(....)
+	void connect(final String mdp, final String login, final ClientInterface client);
 }

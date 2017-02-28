@@ -1,6 +1,11 @@
 package interfaces;
 
-public class ClientInterface {
+/**
+ * @author six delbrouque
+ * 
+ *         Interface remote représentant le client
+ */
+public interface ClientInterface {
 
-//	void notify(Message msg);
+//	 void notify(Message msg);
 }
