@@ -21,13 +21,17 @@ public class ChatRoomImplementation implements ChatRoomInterface{
 	}
 	
 	public void send(MessageInterface msg) throws RemoteException {
-		// TODO Auto-generated method stub
-		
+		for(ClientInterface c : clients){
+			if(c.getIsConnect()){
+				c.notify(msg);
+			}
+		}
 	}
 
 	public void disconnect(ClientInterface c) throws RemoteException {
 		if(clients.contains(c)){
 			c.setIsConnect(false);
+			System.out.println("déconnexion du client");
 		}
 	}
 

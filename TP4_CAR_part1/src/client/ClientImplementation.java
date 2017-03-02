@@ -35,8 +35,7 @@ public class ClientImplementation extends UnicastRemoteObject implements ClientI
 	}
 
 	public void notify(MessageInterface msg) throws RemoteException {
-		// TODO Auto-generated method stub
-		
+		System.out.println(msg.getClient().getPseudo()+" : "+msg.getMessage());
 	}
 
 	public void setLogin(String login) throws RemoteException{

@@ -26,6 +26,7 @@ public class Client {
 	private static Scanner scan;
 	
 	public Client() {
+		scan = new Scanner(System.in);
 		login = "";
 		mdp = "";
 		pseudo = "";
@@ -45,14 +46,12 @@ public class Client {
 	}
 	
 	public boolean connect(){
-		Scanner scan = new Scanner(System.in);
 		System.out.println("login:");
 		login = scan.nextLine();
 		System.out.println("mdp:");
 		mdp = scan.nextLine();
 		System.out.println("pseudo:");
 		pseudo = scan.nextLine();
-		scan.close();
 		try {
 			System.out.println("tentative de connexion en cours...");
 			client = new ClientImplementation(login,mdp,pseudo);
@@ -63,7 +62,6 @@ public class Client {
 			System.out.println("bad");
 			return false;
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return false;
@@ -73,6 +71,14 @@ public class Client {
 		if(message.equalsIgnoreCase("down")){
 			try {
 				stub.disconnect(client);
+			} catch (RemoteException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}else{
+			MessageInterface mess = new MessageImplementation(message,client);
+			try {
+				stub.send(mess);
 			} catch (RemoteException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -88,13 +94,15 @@ public class Client {
 		}
 		
 		try {
-			scan = new Scanner(System.in);
 			String message = "";
 			while(c.getClient().getIsConnect()){
 				System.out.println("taper votre message (si vous voulez vous déconnecter du tchat taper: 'down' ): ");
 				message = scan.nextLine();
-				System.out.println(message);
+				c.appelFonction(message);
 			}
+			System.out.println("déconnecté du serveur");
+			scan.close();
+			System.exit(0);
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
